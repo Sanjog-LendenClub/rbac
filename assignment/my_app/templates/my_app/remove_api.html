@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Api</title>
+</head>
+<body>
+    <h1>Remove API</h1>
+    <p>Name: {{ api.api_name }}</p>
+    <!-- <p>URL: {{ api.url }}</p> -->
+    <form method="post">
+        {% csrf_token %}
+        <ul>
+            {% for api in apis %}
+                <li>{{ api.api_name }}</li>
+            {% endfor %}
+        </ul>
+        <label for="api">API:</label>
+        <input type="text" id="api" name="api" required><br>
+        <input type="submit" value="Remove API">
+    </form>
+</body>
+</html>

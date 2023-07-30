@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update User</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" name="username"><br>
+
+        <label for="role">Update Role:</label>
+        <input type="text" name="role"><br>
+        <p>API checkbox</p>
+
+        <!-- <select name="API" id="api" multiple>
+            {% for api in apis %}
+                <option value="{{ api.api_name }}">{{ api.api_name }}</option>
+            {% endfor %}
+        </select> -->
+        <!-- Add more fields as needed -->
+
+        {% for api in apis %}
+            <input type="checkbox" name="API" id="api_{{ api.id }}" value="{{ api.api_name }}">
+            <label for="api_{{ api.id }}">{{ api.api_name }}</label><br>
+        {% endfor %}
+
+        <input type="submit" value="Update">
+    </form>
+</body>
+</html>

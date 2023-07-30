@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add User</h1>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+        <label for="role">Role:</label>
+        <input type="role" id="role" name="role" required><br>
+        <input type="submit" value="Add User"><br>
+        <p>API checkbox</p>
+
+        <!-- <select name="API" id="api" multiple>
+            {% for api in apis %}
+                <option value="{{ api.api_name }}">{{ api.api_name }}</option>
+            {% endfor %}
+        </select> -->
+
+        {% for api in apis %}
+            <input type="checkbox" name="API" id="api_{{ api.id }}" value="{{ api.api_name }}">
+            <label for="api_{{ api.id }}">{{ api.api_name }}</label><br>
+        {% endfor %}
+
+    </form>
+</body>
+</html>
+

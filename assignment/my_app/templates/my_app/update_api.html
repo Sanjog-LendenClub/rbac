@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Update API</h1>
+    <form method="post">
+        {% csrf_token %}
+        <ul>
+            {% for api in apis %}
+                <li>{{ api.api_name }}</li>
+            {% endfor %}
+        </ul>
+        <label for="Existing API">Current API:</label>
+        <input type="text" id="curr_url" name="curr_url" required><br>
+        <label for="Update_API">Update API:</label>
+        <input type="text" id="up_api" name="up_api" required><br>
+        <input type="submit" value="Update API">
+    </form>
+</body>
+</html>
